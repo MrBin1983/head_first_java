@@ -2,25 +2,29 @@ package chapter_6.game_three_ships;
 
 import java.util.ArrayList;
 
-public class OneShip {
+public class Ship {
 
-    ArrayList<String> locationCells;
+    int deck;
+    ArrayList<String> initialLocation;
 
-    public OneShip(ArrayList<String> locationCells) {
-        this.locationCells = locationCells;
+    ArrayList<String> realLocation;
+
+    public Ship(int deck , ArrayList<String> initialLocation) {
+        this.deck = deck;
+        this.initialLocation = initialLocation;
     }
 
     public String checkYourself (String stringGuess) {
         String result = "Мимо";
-        for (String cell : locationCells) {
+        for (String cell : realLocation) {
             if (stringGuess.equals(cell)) {
                 result = "Попал";
-                locationCells.remove(stringGuess);
+                realLocation.remove(stringGuess);
                 break;
             }
         }
 
-        if (locationCells.size() == 0) {
+        if (realLocation.size() == 0) {
             result = "Потопил";
         }
 
