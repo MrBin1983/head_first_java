@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Ship {
 
     int deck;
-    ArrayList<String> initialLocation;
+    ArrayList<GameField> initialLocation;
 
     ArrayList<String> realLocation;
 
-    public Ship(int deck , ArrayList<String> initialLocation) {
+    public Ship(int deck , ArrayList<GameField> initialLocation) {
         this.deck = deck;
         this.initialLocation = initialLocation;
     }

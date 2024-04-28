@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="three ships copy from dot_com">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" afterDir="false" />
+    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="work getNewLocationShip for first ship">
+      <change afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/OneShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ThreeShipsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipsGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +45,13 @@
     <option name="flattenPackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="chapter_6.game_three_ships" />
@@ -130,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713685850907</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="work getNewLocationShip for first ship">
+      <created>1713716680489</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713716680489</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +152,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="one site all work" />
     <MESSAGE value="three ships copy from dot_com" />
-    <option name="LAST_COMMIT_MESSAGE" value="three ships copy from dot_com" />
+    <MESSAGE value="work getNewLocationShip for first ship" />
+    <option name="LAST_COMMIT_MESSAGE" value="work getNewLocationShip for first ship" />
   </component>
 </project>
