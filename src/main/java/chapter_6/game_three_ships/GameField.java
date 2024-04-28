@@ -2,11 +2,11 @@ package chapter_6.game_three_ships;
 
 public class GameField {
 
-    int horizontal;
-    int vertical;
-    boolean hit = false;
-    boolean occupied = false;
-    boolean nearShip = true;
+    private final int horizontal;
+    private final int vertical;
+    private boolean hit = false;
+    private boolean occupied = false;
+    private boolean nearShip = false;
 
     public GameField(int horizontal, int vertical) {
         this.horizontal = horizontal;
@@ -43,5 +43,12 @@ public class GameField {
 
     public void setNearShip(boolean nearShip) {
         this.nearShip = nearShip;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + getHorizontal() +
+                "," + getVertical() +
+                "}";
     }
 }

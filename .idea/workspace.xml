@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="work getNewLocationShip for first ship">
-      <change afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameField.java" afterDir="false" />
+    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="GameField add nearShip">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713716680489</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GameField add nearShip">
+      <created>1714295717731</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714295717732</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +160,7 @@
     <MESSAGE value="one site all work" />
     <MESSAGE value="three ships copy from dot_com" />
     <MESSAGE value="work getNewLocationShip for first ship" />
-    <option name="LAST_COMMIT_MESSAGE" value="work getNewLocationShip for first ship" />
+    <MESSAGE value="GameField add nearShip" />
+    <option name="LAST_COMMIT_MESSAGE" value="GameField add nearShip" />
   </component>
 </project>

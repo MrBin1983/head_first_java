@@ -32,4 +32,8 @@ public class Ship {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(initialLocation);
+    }
 }

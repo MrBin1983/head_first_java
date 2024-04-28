@@ -27,27 +27,7 @@ public class GameServices {
 //
 //
 //
-//        int randomDirection = (int) (Math.random() * 2);
 //
-//        ArrayList<GameField> newShipLocation = new ArrayList<>();
-//
-//        if (randomDirection == 0) {
-//
-//            for (int i = 0; i < deck; i++) {
-//
-//                int randomHorizontal = (int) (Math.random() * (7 - deck)); //создаем начальную клетку расположения корабля по горизонтали
-//
-//                int randomVertical = (int) (Math.random() * (7 - deck)); //создаем начальную клетку расположения корабля
-//
-//                //            newLocationShip.add(String.valueOf((char)('A' + randomHorizontal + i)) + (randomVertical + 1));
-//            }
-//
-//        } else {
-//
-//            for (int i = 0; i < deck; i++) {
-//                //            newLocationShip.add(String.valueOf((char)('A' + randomHorizontal)) + (1 + i + randomVertical));
-//            }
-//        }
 //
 //        return newShipLocation;
 //
@@ -57,21 +37,84 @@ public class GameServices {
         ArrayList<GameField> allGameField = new ArrayList<>();
         for (int i = 1; i < numberOfFields + 1; i++) {
             for (int j = 1; j < numberOfFields + 1; j++) {
-                allGameField.add(new GameField(i,j));
+                allGameField.add(new GameField(i, j));
             }
         }
         return allGameField;
     }
 
-    public ArrayList<Ship> createNewShip(int deck, ArrayList<Ship> allShips, ArrayList<GameField> allGameField) {
+    public void createNewShip(int numberOfFields, int deck, ArrayList<Ship> allShips, ArrayList<GameField> allGameField) {
 
-        ArrayList<GameField> shipLocation = new ArrayList<>();
+        ArrayList<GameField> possibleLocations = allGameField;  //создаем массив возможных начальных клеток расположения корабля
 
-        Ship ship = new Ship(deck, shipLocation);
+        possibleLocations.removeIf(GameField::isOccupied);
 
-        allShips.add(ship);
-        return allShips;
+        ArrayList<GameField> possibleLocationsHorizontal = possibleLocations;
+        ArrayList<GameField> possibleLocationsVertical = possibleLocations;
+
+
+        for (GameField loc : possibleLocations) {
+            if (loc.isNearShip()) {
+                possibleLocationsHorizontal.removeIf(
+                        locHor -> locHor.getVertical() == loc.getVertical() &&
+                                locHor.getHorizontal() <= loc.getHorizontal() &&
+                                locHor.getHorizontal() > loc.getHorizontal() - deck + 1);
+                possibleLocationsVertical.removeIf(
+                        locHor -> locHor.getHorizontal() == loc.getHorizontal() &&
+                                locHor.getVertical() <= loc.getVertical() &&
+                                locHor.getVertical() > loc.getVertical() - deck + 1);
+            }
+        }
+
+        possibleLocationsHorizontal.removeIf(locHor -> locHor.getHorizontal() > numberOfFields - deck + 1);
+        possibleLocationsVertical.removeIf(locVer -> locVer.getVertical() > numberOfFields - deck + 1);
+
+        ArrayList<GameField> newShipLocation = new ArrayList<>();
+
+        if (possibleLocationsHorizontal.isEmpty()) {
+
+            int randomVertical = (int) (Math.random() * possibleLocationsVertical.size()); //создаем начальную клетку расположения корабля по вертикали
+
+            for (int i = 0; i < deck; i++) {
+                newShipLocation.add(possibleLocationsVertical.get(i + randomVertical));
+            }
+        } else if (possibleLocationsVertical.isEmpty()) {
+
+            int randomHorizontal = (int) (Math.random() * possibleLocationsHorizontal.size()); //создаем начальную клетку расположения корабля по горизонтали
+
+            for (int i = 0; i < deck; i++) {
+                newShipLocation.add(possibleLocationsHorizontal.get(i + randomHorizontal));
+            }
+        } else {
+
+            int randomDirection = (int) (Math.random() * 2);
+
+
+            if (randomDirection == 0) {
+
+                int randomHorizontal = (int) (Math.random() * possibleLocationsHorizontal.size()); //создаем начальную клетку расположения корабля по горизонтали
+
+                for (int i = 0; i < deck; i++) {
+                    newShipLocation.add(possibleLocationsHorizontal.get(i + randomHorizontal));
+                }
+
+            } else {
+
+                int randomVertical = (int) (Math.random() * possibleLocationsVertical.size()); //создаем начальную клетку расположения корабля по вертикали
+
+                for (int i = 0; i < deck; i++) {
+                    newShipLocation.add(possibleLocationsVertical.get(i + randomVertical));
+                }
+            }
+
+        }
+
+        allShips.add(new Ship( deck, newShipLocation));
+
     }
+
+
+
 
 
 }

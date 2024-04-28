@@ -6,16 +6,21 @@ public class ShipTest {
 
     public static void main(String[] args) {
 
+        GameServices gameServices = new GameServices();
+
+        int numberOfFields = 10;
+
+        ArrayList<GameField> allGameField = gameServices.getNewGameField(numberOfFields);
+
         int deck = 3; //количество палуб
 
-        GameServices helper = new GameServices(); //класс, который принимает значения, введенные игроком
+        ArrayList<Ship> allShips = new ArrayList<>();
 
-        int randomVertical = (int) (Math.random() * (7 - deck)); //создаем начальную клетку расположения корабля по вертикали
+        gameServices.createNewShip(numberOfFields, deck, allShips, allGameField);
 
-        int randomHorizontal = (int) (Math.random() * (7 - deck)); //создаем начальную клетку расположения корабля по горизонтали
+        System.out.println(allShips);
 
-
-
+        System.out.println(allGameField);
     }
 
 }

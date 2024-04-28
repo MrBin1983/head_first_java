@@ -11,20 +11,17 @@ public class GameMain {
         int numberOfFields = 10;
 
 
-
         ArrayList<GameField> allGameField = gameServices.getNewGameField(numberOfFields);
 
         int deck = 3; //количество палуб
-
 
 
         int threeDecksShips = Integer.parseInt(gameServices.getUserInput("Введите количество трехпалубных кораблей:"));
 
         ArrayList<Ship> firstShip = new ArrayList<>();
 
-        ArrayList<Ship> allShips = gameServices.createNewShip(deck, firstShip, allGameField);
+        gameServices.createNewShip(numberOfFields, deck, firstShip, allGameField);
 
-                ArrayList<ArrayList<String>> possibleLocations = new ArrayList<>();  //создаем массив возможных начальных клеток расположения корабля
 
         int numOfGuesses = 0; //количество попыток
 
@@ -34,7 +31,7 @@ public class GameMain {
 
         while (isAlive) {
             String guess = gameServices.getUserInput("Введите число:");
-        //    String result = gameServices.checkYourself(guess);
+            //    String result = gameServices.checkYourself(guess);
             String result = null;
             numOfGuesses++;
 
