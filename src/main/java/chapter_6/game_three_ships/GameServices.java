@@ -23,15 +23,6 @@ public class GameServices {
         return inputLine;
     }
 
-//    public ArrayList<GameField> getNewShipLocation(int deck, ArrayList<GameField> gameField, ArrayList<Ship> allShips) {
-//
-//
-//
-//
-//
-//        return newShipLocation;
-//
-//    }
 
     public ArrayList<GameField> getNewGameField(int numberOfFields) {
         ArrayList<GameField> allGameField = new ArrayList<>();
@@ -75,15 +66,27 @@ public class GameServices {
 
             int randomVertical = (int) (Math.random() * possibleLocationsVertical.size()); //создаем начальную клетку расположения корабля по вертикали
 
-            for (int i = 0; i < deck; i++) {
-                newShipLocation.add(possibleLocationsVertical.get(i + randomVertical));
+            newShipLocation.add(possibleLocationsVertical.get(randomVertical));
+
+            for (GameField gameField : allGameField) {
+                if (gameField.getVertical() == newShipLocation.get(0).getVertical() &&
+                        newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
+                        gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
+                    newShipLocation.add(gameField);
+                }
             }
         } else if (possibleLocationsVertical.isEmpty()) {
 
             int randomHorizontal = (int) (Math.random() * possibleLocationsHorizontal.size()); //создаем начальную клетку расположения корабля по горизонтали
 
-            for (int i = 0; i < deck; i++) {
-                newShipLocation.add(possibleLocationsHorizontal.get(i + randomHorizontal));
+            newShipLocation.add(possibleLocationsHorizontal.get(randomHorizontal));
+
+            for (GameField gameField : allGameField) {
+                if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                        newShipLocation.get(0).getVertical() < gameField.getVertical() &&
+                        gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
+                    newShipLocation.add(gameField);
+                }
             }
         } else {
 
@@ -94,27 +97,36 @@ public class GameServices {
 
                 int randomHorizontal = (int) (Math.random() * possibleLocationsHorizontal.size()); //создаем начальную клетку расположения корабля по горизонтали
 
-                for (int i = 0; i < deck; i++) {
-                    newShipLocation.add(possibleLocationsHorizontal.get(i + randomHorizontal));
+                newShipLocation.add(possibleLocationsHorizontal.get(randomHorizontal));
+
+                for (GameField gameField : allGameField) {
+                    if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                            newShipLocation.get(0).getVertical() < gameField.getVertical() &&
+                            gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
+                        newShipLocation.add(gameField);
+                    }
                 }
 
             } else {
 
                 int randomVertical = (int) (Math.random() * possibleLocationsVertical.size()); //создаем начальную клетку расположения корабля по вертикали
 
-                for (int i = 0; i < deck; i++) {
-                    newShipLocation.add(possibleLocationsVertical.get(i + randomVertical));
+                newShipLocation.add(possibleLocationsVertical.get(randomVertical));
+
+                for (GameField gameField : allGameField) {
+                    if (gameField.getVertical() == newShipLocation.get(0).getVertical() &&
+                            newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
+                            gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
+                        newShipLocation.add(gameField);
+                    }
                 }
             }
 
         }
 
-        allShips.add(new Ship( deck, newShipLocation));
+        allShips.add(new Ship(deck, newShipLocation));
 
     }
-
-
-
 
 
 }
