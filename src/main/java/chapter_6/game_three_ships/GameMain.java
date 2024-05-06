@@ -1,6 +1,6 @@
 package chapter_6.game_three_ships;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class GameMain {
 
@@ -10,17 +10,19 @@ public class GameMain {
 
         int numberOfFields = 10;
 
-
         ArrayList<GameField> allGameField = gameServices.getNewGameField(numberOfFields);
+
+        Map<Integer, Integer> userShips = new HashMap<>();
 
         int deck = 3; //количество палуб
 
+        int numberOfShips = 3; //количество кораблей
 
         int threeDecksShips = Integer.parseInt(gameServices.getUserInput("Введите количество трехпалубных кораблей:"));
 
-        ArrayList<Ship> firstShip = new ArrayList<>();
+        ArrayList<Ship> allShips = new ArrayList<>();
 
-        gameServices.createNewShip(numberOfFields, deck, firstShip, allGameField);
+        gameServices.createNewShip(numberOfFields, userShips, allShips, allGameField);
 
 
         int numOfGuesses = 0; //количество попыток

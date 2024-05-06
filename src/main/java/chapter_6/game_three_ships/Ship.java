@@ -4,14 +4,22 @@ import java.util.ArrayList;
 
 public class Ship {
 
-    int deck;
-    ArrayList<GameField> initialLocation;
+    private int deck;
+    private ArrayList<GameField> initialLocation;
 
     ArrayList<String> realLocation;
 
     public Ship(int deck , ArrayList<GameField> initialLocation) {
         this.deck = deck;
         this.initialLocation = initialLocation;
+    }
+
+    public int getDeck() {
+        return deck;
+    }
+
+    public ArrayList<GameField> getInitialLocation() {
+        return initialLocation;
     }
 
     public String checkYourself (String stringGuess) {

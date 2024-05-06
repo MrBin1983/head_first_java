@@ -1,6 +1,8 @@
 package chapter_6.game_three_ships;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShipTest {
 
@@ -12,11 +14,15 @@ public class ShipTest {
 
         ArrayList<GameField> allGameField = gameServices.getNewGameField(numberOfFields);
 
-        int deck = 3; //количество палуб
+        Map<Integer, Integer> userShips = new HashMap<>();
+
+        userShips.put(1, 0);
+        userShips.put(2, 2);
+        userShips.put(3, 0);
 
         ArrayList<Ship> allShips = new ArrayList<>();
 
-        gameServices.createNewShip(numberOfFields, deck, allShips, allGameField);
+        gameServices.createNewShip(numberOfFields, userShips, allShips, allGameField);
 
         System.out.println(allShips);
 
