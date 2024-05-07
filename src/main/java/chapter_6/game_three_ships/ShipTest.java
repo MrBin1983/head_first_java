@@ -16,9 +16,10 @@ public class ShipTest {
 
         Map<Integer, Integer> userShips = new HashMap<>();
 
-        userShips.put(1, 0);
-        userShips.put(2, 2);
-        userShips.put(3, 0);
+        userShips.put(1, 4);
+        userShips.put(2, 3);
+        userShips.put(3, 2);
+        userShips.put(4, 1);
 
         ArrayList<Ship> allShips = new ArrayList<>();
 
@@ -27,6 +28,10 @@ public class ShipTest {
         System.out.println(allShips);
 
         System.out.println(allGameField);
+
+        for (GameField gf: allGameField) {
+            System.out.println("(" + gf.getHorizontal() + "-" + gf.getVertical() + "-" + gf.isOccupied() + "-" + gf.isNearShip() + ")");
+        }
     }
 
 }

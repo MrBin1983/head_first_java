@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="fixed createNewShip">
+    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="add userShips">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714407726588</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add userShips">
+      <created>1715021710742</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715021710742</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +181,7 @@
     <MESSAGE value="GameField add nearShip" />
     <MESSAGE value="need fixed createNewShip" />
     <MESSAGE value="fixed createNewShip" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed createNewShip" />
+    <MESSAGE value="add userShips" />
+    <option name="LAST_COMMIT_MESSAGE" value="add userShips" />
   </component>
 </project>

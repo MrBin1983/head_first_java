@@ -37,10 +37,15 @@ public class GameServices {
 
     public void createNewShip(int numberOfFields, Map<Integer, Integer> userShips, ArrayList<Ship> allShips, ArrayList<GameField> allGameField) {
 
-        ArrayList<GameField> possibleLocations = allGameField;  //создаем массив возможных начальных клеток расположения корабля
+        ArrayList<GameField> possibleLocationsHorizontal = new ArrayList<>();  //создаем массив возможных начальных клеток расположения корабля по горизонтали
+        ArrayList<GameField> possibleLocationsVertical = new ArrayList<>(); //создаем массив возможных начальных клеток расположения корабля по вертикали
 
-        possibleLocations.removeIf(GameField::isOccupied); //удаляем из массива клетки с кораблями
-
+        for (GameField gf : allGameField) {
+            GameField cloneGFHor = gf;
+            GameField cloneGFVer = gf;
+            possibleLocationsHorizontal.add(cloneGFHor);
+            possibleLocationsVertical.add(cloneGFVer);
+        }
 
         for (Map.Entry<Integer, Integer> ships : userShips.entrySet()) {
 
@@ -48,27 +53,30 @@ public class GameServices {
 
             Integer numberOfShips = ships.getValue();
 
-            ArrayList<GameField> possibleLocationsHorizontal = possibleLocations; //массив возможных начальных клеток при горизонтальном расположении корабля
-            ArrayList<GameField> possibleLocationsVertical = possibleLocations; //массив возможных начальных клеток при вертикальном расположении корабля
-
             for (int i = 0; i < numberOfShips; i++) {
 
+                possibleLocationsHorizontal.removeIf(GameField::isOccupied); //удаляем из массива клетки с кораблями
+                possibleLocationsVertical.removeIf(GameField::isOccupied); //удаляем из массива клетки с кораблями
 
-                for (GameField loc : possibleLocations) { //удаляем из массивов клетки возле кораблей
+                for (GameField loc : allGameField) { //удаляем из массивов клетки возле кораблей
                     if (loc.isNearShip()) {
                         possibleLocationsHorizontal.removeIf(
-                                locHor -> locHor.getVertical() == loc.getVertical() &&
-                                        locHor.getHorizontal() <= loc.getHorizontal() &&
-                                        locHor.getHorizontal() > loc.getHorizontal() - deck + 1);
-                        possibleLocationsVertical.removeIf(
                                 locHor -> locHor.getHorizontal() == loc.getHorizontal() &&
-                                        locHor.getVertical() <= loc.getVertical() &&
-                                        locHor.getVertical() > loc.getVertical() - deck + 1);
+                                        locHor.getVertical() <= loc.getVertical() - deck + 1);
                     }
                 }
 
-                possibleLocationsHorizontal.removeIf(locHor -> locHor.getHorizontal() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
-                possibleLocationsVertical.removeIf(locVer -> locVer.getVertical() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
+                for (GameField loc : allGameField) { //удаляем из массивов клетки возле кораблей
+                    if (loc.isNearShip()) {
+                        possibleLocationsVertical.removeIf(
+                                locHor -> locHor.getVertical() == loc.getVertical() &&
+                                        locHor.getHorizontal() <= loc.getHorizontal() - deck + 1);
+
+                    }
+                }
+
+                possibleLocationsHorizontal.removeIf(locHor -> locHor.getVertical() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
+                possibleLocationsVertical.removeIf(locVer -> locVer.getHorizontal() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
 
                 ArrayList<GameField> newShipLocation = new ArrayList<>();
 
@@ -83,6 +91,11 @@ public class GameServices {
                                 newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
                                 gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
                             newShipLocation.add(gameField);
+                            gameField.setOccupied(true);
+                        }
+                        if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                                newShipLocation.get(0).getVertical() == gameField.getVertical()) {
+                            gameField.setOccupied(true);
                         }
                     }
                 } else if (possibleLocationsVertical.isEmpty()) { //если невозможно расположение корабля по вертикали
@@ -96,6 +109,10 @@ public class GameServices {
                                 newShipLocation.get(0).getVertical() < gameField.getVertical() &&
                                 gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
                             newShipLocation.add(gameField);
+                            gameField.setOccupied(true);
+                        } else if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                                newShipLocation.get(0).getVertical() == gameField.getVertical()) {
+                            gameField.setOccupied(true);
                         }
                     }
                 } else {
@@ -113,6 +130,11 @@ public class GameServices {
                                     newShipLocation.get(0).getVertical() < gameField.getVertical() &&
                                     gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
                                 newShipLocation.add(gameField);
+                                gameField.setOccupied(true);
+                            }
+                            if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                                    newShipLocation.get(0).getVertical() == gameField.getVertical()) {
+                                gameField.setOccupied(true);
                             }
                         }
 
@@ -127,6 +149,11 @@ public class GameServices {
                                     newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
                                     gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
                                 newShipLocation.add(gameField);
+                                gameField.setOccupied(true);
+                            }
+                            if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                                    newShipLocation.get(0).getVertical() == gameField.getVertical()) {
+                                gameField.setOccupied(true);
                             }
                         }
                     }
@@ -134,6 +161,32 @@ public class GameServices {
                 }
 
                 allShips.add(new Ship(deck, newShipLocation));
+
+                for (GameField gameField : allGameField) {
+                    for (GameField shipLocation : newShipLocation) {
+                        if (!gameField.isOccupied()) {
+                            if ((gameField.getHorizontal() + 1 == shipLocation.getHorizontal() &&
+                                    gameField.getVertical() + 1 == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() + 1 == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() + 1 == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() - 1 == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() + 1 == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() - 1 == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() - 1 == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() + 1 == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() - 1 == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() - 1 == shipLocation.getVertical()) ||
+                                    (gameField.getHorizontal() - 1 == shipLocation.getHorizontal() &&
+                                            gameField.getVertical() == shipLocation.getVertical())
+                            ) {
+                                gameField.setNearShip(true);
+                            }
+                        }
+                    }
+                }
 
             }
 
