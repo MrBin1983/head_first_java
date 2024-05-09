@@ -61,39 +61,39 @@ public class GameServices {
                 for (GameField loc : allGameField) { //удаляем из массивов клетки возле кораблей
                     if (loc.isNearShip()) {
                         possibleLocationsHorizontal.removeIf(
-                                locHor -> locHor.getHorizontal() == loc.getHorizontal() &&
-                                        locHor.getVertical() <= loc.getVertical() - deck + 1);
+                                locHor -> locHor.getVertical() == loc.getVertical() &&
+                                        locHor.getHorizontal() <= loc.getHorizontal() &&
+                                        locHor.getHorizontal() > (loc.getHorizontal() - deck));
                     }
                 }
 
                 for (GameField loc : allGameField) { //удаляем из массивов клетки возле кораблей
                     if (loc.isNearShip()) {
                         possibleLocationsVertical.removeIf(
-                                locHor -> locHor.getVertical() == loc.getVertical() &&
-                                        locHor.getHorizontal() <= loc.getHorizontal() - deck + 1);
-
+                                locHor -> locHor.getHorizontal() == loc.getHorizontal() &&
+                                        locHor.getVertical() <= loc.getVertical() &&
+                                        locHor.getVertical() > loc.getVertical() - deck);
                     }
                 }
 
-                possibleLocationsHorizontal.removeIf(locHor -> locHor.getVertical() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
-                possibleLocationsVertical.removeIf(locVer -> locVer.getHorizontal() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
+                possibleLocationsHorizontal.removeIf(locHor -> locHor.getHorizontal() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
+                possibleLocationsVertical.removeIf(locVer -> locVer.getVertical() > numberOfFields - deck + 1); //удаляем из массивов клетки близкие к краю поля
 
                 ArrayList<GameField> newShipLocation = new ArrayList<>();
 
                 if (possibleLocationsHorizontal.isEmpty()) { //если невозможно расположение корабля по горизонтали
 
-                    int randomVertical = (int) (Math.random() * possibleLocationsVertical.size()); //создаем начальную клетку расположения корабля по вертикали
+                    int randomVertical = (int) (Math.random() * possibleLocationsVertical.size()); //создаем случайное число для расположения корабля по вертикали
 
-                    newShipLocation.add(possibleLocationsVertical.get(randomVertical));
+                    newShipLocation.add(possibleLocationsVertical.get(randomVertical)); //помещаем начальную клетку в массив клеток расположения корабля
 
                     for (GameField gameField : allGameField) {
-                        if (gameField.getVertical() == newShipLocation.get(0).getVertical() &&
-                                newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
-                                gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
+                        if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                                newShipLocation.get(0).getVertical() < gameField.getVertical() &&
+                                gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
                             newShipLocation.add(gameField);
                             gameField.setOccupied(true);
-                        }
-                        if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                        } else if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
                                 newShipLocation.get(0).getVertical() == gameField.getVertical()) {
                             gameField.setOccupied(true);
                         }
@@ -105,9 +105,9 @@ public class GameServices {
                     newShipLocation.add(possibleLocationsHorizontal.get(randomHorizontal));
 
                     for (GameField gameField : allGameField) {
-                        if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
-                                newShipLocation.get(0).getVertical() < gameField.getVertical() &&
-                                gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
+                        if (gameField.getVertical() == newShipLocation.get(0).getVertical() &&
+                                newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
+                                gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
                             newShipLocation.add(gameField);
                             gameField.setOccupied(true);
                         } else if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
@@ -126,13 +126,12 @@ public class GameServices {
                         newShipLocation.add(possibleLocationsHorizontal.get(randomHorizontal));
 
                         for (GameField gameField : allGameField) {
-                            if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
-                                    newShipLocation.get(0).getVertical() < gameField.getVertical() &&
-                                    gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
+                            if (gameField.getVertical() == newShipLocation.get(0).getVertical() &&
+                                    newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
+                                    gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
                                 newShipLocation.add(gameField);
                                 gameField.setOccupied(true);
-                            }
-                            if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                            } else if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
                                     newShipLocation.get(0).getVertical() == gameField.getVertical()) {
                                 gameField.setOccupied(true);
                             }
@@ -145,13 +144,12 @@ public class GameServices {
                         newShipLocation.add(possibleLocationsVertical.get(randomVertical));
 
                         for (GameField gameField : allGameField) {
-                            if (gameField.getVertical() == newShipLocation.get(0).getVertical() &&
-                                    newShipLocation.get(0).getHorizontal() < gameField.getHorizontal() &&
-                                    gameField.getHorizontal() < (newShipLocation.get(0).getHorizontal() + deck)) {
+                            if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                                    newShipLocation.get(0).getVertical() < gameField.getVertical() &&
+                                    gameField.getVertical() < (newShipLocation.get(0).getVertical() + deck)) {
                                 newShipLocation.add(gameField);
                                 gameField.setOccupied(true);
-                            }
-                            if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
+                            } else if (gameField.getHorizontal() == newShipLocation.get(0).getHorizontal() &&
                                     newShipLocation.get(0).getVertical() == gameField.getVertical()) {
                                 gameField.setOccupied(true);
                             }
@@ -193,5 +191,6 @@ public class GameServices {
         }
 
     }
+
 
 }

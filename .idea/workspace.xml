@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="add userShips">
+    <list default="true" id="6f7fa629-358a-412d-9a3a-ce6f7c3a5df6" name="Changes" comment="fixed createNewShip but have a new bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/GameServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chapter_6/game_three_ships/ShipTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715021710742</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fixed createNewShip but have a new bug">
+      <created>1715107160964</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715107160964</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,6 +188,7 @@
     <MESSAGE value="need fixed createNewShip" />
     <MESSAGE value="fixed createNewShip" />
     <MESSAGE value="add userShips" />
-    <option name="LAST_COMMIT_MESSAGE" value="add userShips" />
+    <MESSAGE value="fixed createNewShip but have a new bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed createNewShip but have a new bug" />
   </component>
 </project>
